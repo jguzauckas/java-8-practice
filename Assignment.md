@@ -97,7 +97,7 @@ The `fillColumnMajor` method takes a 1D `int` array and places each of its chara
 
 The 2D array is to be filled in column-major order by going through the 1D `int` array `vals` from beginning to end.
 
-This method will return the `int` 2D array with the values filled in.
+This method will return the `int` 2D array with the values filled in. The original 1D `int` array `vals` should remain unchanged.
 
 You can assume that `vals.length == rows * cols`.
 
@@ -112,4 +112,110 @@ result (after method call):
 10  7   4   1
 9   6   3   0
 8   5   2   -1
+```
+
+---
+
+## `fillDownUp`
+
+The `fillDownUp` method takes a 1D `int` array and places each of its characters into a 2D `int` array with a defined size. It has three parameters: the 1D `int` array `vals` to be put into the 2D array, and two `int` values `rows` and `cols` that describe the size of 2D array to be built.
+
+The 2D array is to be filled in a "down-up" order, which is a modified version of column-major order. The difference from traditional column-major order, is that the cell you are entering "snakes" up and down the columns, as opposed to always filling in the columns from the top to bottom. This means that the first column is filled going downwards, the second column is filled upwards, and we keep alternating back and forth.
+
+This method will return the `int` 2D array with the values filled in. The original 1D `int` array `vals` should remain unchanged.
+
+You can assume that `vals.length == rows * cols`.
+
+Here is an example of how this method might work:
+
+```
+int[] source = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
+int[][] result = fillDownUp(source, 3, 4);
+
+result (after method call):
+1   6   7   12
+2   5   8   11
+3   4   9   10
+```
+
+---
+
+## `grow`
+
+The `grow` method will take a 2D `int` array of values, and create a new larger 2D `int` array with the same values re-filled in. It has three parameters: the 2D `int` array `mat` to be expanded or grown, and two `int` values `newRows` and `newCols` that describe the size of the new, larger, 2D array to be built.
+
+The values from `mat` will be filled into the new larger array in row-major order. This will result in values potentially changing what row and/or column they belong to as the values are stretched to fit the new array. There will be empty values in the new array, they should be left as default `int` values.
+
+This method will return the bigger `int` 2D array with the values filled in. The original 2D `int` array `mat` should remain unchanged.
+
+You can assume that `newRows > mat.length` and `newCols > mat[0].length`.
+
+Here is an example of how this method might work:
+
+```
+mat (before method call):
+10  9   8   7
+6   5   4   3
+2   1   -1  0
+
+int[][] result = grow(mat, 4, 5);
+
+result (after method call):
+10  9   8   7   6
+5   4   3   2   1
+-1  0   0   0   0
+0   0   0   0   0
+```
+
+---
+
+`crop`
+
+The `grow` method will take a 2D `int` array of values, and create a new smaller 2D `int` array with a specified section of the original values filled in. It has three parameters: the 2D `int` array `mat` to be shrunk or cropped, and four `int` values `startRow`, `startCol`, `endRow`, and `endCol` that describe the section of the original 2D array to pull out.
+
+The specified section of values from `mat` will be filled into the new smaller array while maintaining their row/column order. We expect the row and/or column indices to change, but values that were in a row or column together before should remain together in a row or column. There should not be any empty spaces in the new array.
+
+This method will return the smaller `int` 2D array with the values filled in. The original 2D `int` array `mat` should remain unchanged.
+
+Here is an example of how this method might work:
+
+```
+mat (before method call):
+10  9   8   7
+6   5   4   3
+2   1   -1  0
+
+int[][] result = crop(mat, 0, 1, 1, 2);
+
+result (after method call):
+9   8
+5   4
+```
+
+---
+
+`invert`
+
+The `invert` method will take a 2D `int` array of values, and perform what is called a "transposition" of the rows and columns. It has one parameters: the 2D `int` array `mat` to be inverted.
+
+A transposition of rows and columns is swapping the rows and the columns of an array. This visually looks like rotating our array 90 degrees to the right, resulting in what used to be the first column being the first row and vice-a-versa with what used to be the first row.
+
+This method will return the transposed `int` 2D array with the values filled in. The original 2D `int` array `mat` should remain unchanged.
+
+Here is an example of how this method might work:
+
+```
+mat (before method call);
+10  9   8   7
+6   5   4   3
+2   1   -1  0
+
+int[][] result = invert(mat);
+
+result (after method call):
+10  6   2
+9   5   1
+8   4   -1
+7   3   0
 ```
