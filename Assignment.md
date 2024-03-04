@@ -172,7 +172,7 @@ result (after method call):
 
 ---
 
-`crop`
+## `crop`
 
 The `grow` method will take a 2D `int` array of values, and create a new smaller 2D `int` array with a specified section of the original values filled in. It has three parameters: the 2D `int` array `mat` to be shrunk or cropped, and four `int` values `startRow`, `startCol`, `endRow`, and `endCol` that describe the section of the original 2D array to pull out.
 
@@ -197,7 +197,7 @@ result (after method call):
 
 ---
 
-`invert`
+## `invert`
 
 The `invert` method will take a 2D `int` array of values, and perform what is called a "transposition" of the rows and columns. It has one parameters: the 2D `int` array `mat` to be inverted.
 
