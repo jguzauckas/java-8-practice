@@ -2,6 +2,8 @@
 
 You will complete each of the methods described below in the `Assignment.java` file. The method headers are already written, you just need to fill them in.
 
+To test your code, you can just run the `Assignment.java` file that you are working in. It will automatically run 1,000 tests with randomly generated 2D arrays and tell you what percentage of tests that you passed for each algorithm. Your goal is to be able to run the `Assignment.java` file and pass 100% of tests for all 8 algorithms.
+
 ---
 
 ## `rowSwap`
